@@ -1,6 +1,6 @@
 {
   "name": "@jswork/url2file",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "Make url to local file.",
   "main": "dist/cjs/index.js",
   "module": "dist/esm/index.js",
@@ -19,7 +19,6 @@
     "@jswork/gulp-pkg-header": "^1.0.4",
     "@types/jest": "^26.0.23",
     "babel-jest": "^27.0.1",
-    "del": "^5.1.0",
     "gulp": "^4.0.2",
     "gulp-header": "^2.0.9",
     "gulp-ignore": "^3.0.0",
@@ -46,6 +45,7 @@
     "url": "https://github.com/afeiship/url2file.git"
   },
   "dependencies": {
+    "del": "^5.1.0",
     "mkdirp": "^1.0.4",
     "node-fetch": "^2.6.7"
   },
