@@ -28,7 +28,7 @@ async function url2file(inUrl: string, opts: any = {}) {
   // make sure the directory exists
   mkdirp.sync(dirname);
   // del the file if it exists
-  del.sync(file);
+  del.sync([file]);
   const res = await fetch(inUrl, options);
   const data = await res.buffer();
   const headerBuf = toBuf(opts.header);
