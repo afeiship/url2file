@@ -6,9 +6,16 @@ import fetch from 'node-fetch';
 const ua = 'Mozilla/5.0 (Windows NT 6.1; Win64; x64; rv:47.0) Gecko/20100101 Firefox/47.3';
 const defaults = {
   dst: './dist',
+  header: null,
+  footer: null,
   headers: {
     'user-agent': ua
   }
+};
+
+const toBuf = (str) => {
+  if (!str) return null;
+  return Buffer.from(str);
 };
 
 async function url2file(inUrl: string, opts: any = {}) {
@@ -20,7 +27,10 @@ async function url2file(inUrl: string, opts: any = {}) {
   mkdirp.sync(dirname);
   const res = await fetch(inUrl, options);
   const data = await res.buffer();
-  await fs.writeFileSync(file, data);
+  const headerBuf = toBuf(opts.header);
+  const footerBuf = toBuf(opts.footer);
+  const buf = Buffer.concat([headerBuf, data, footerBuf].filter(Boolean));
+  await fs.writeFileSync(file, buf);
   return file;
 }
 

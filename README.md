@@ -19,7 +19,11 @@ url2file([
   'https://fasimi.com/',
   'https://fasimi.com/filters/series.html',
   'https://fasimi.com/filters/movie.html'
-], {dst:'.'});
+], { 
+  dst: '.tmp', 
+  header: ['<!---abc --->'].join('\n'), 
+  footer: ['\n<!--footer-->'].join('\n') 
+});
 ```
 
 ## license

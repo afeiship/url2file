@@ -1,6 +1,6 @@
 {
   "name": "@jswork/url2file",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Make url to local file.",
   "main": "dist/cjs/index.js",
   "module": "dist/esm/index.js",
@@ -8,6 +8,7 @@
   "scripts": {
     "build": "gulp",
     "test": "jest",
+    "docs": "gulp clean && typedoc docs",
     "release": "release-it"
   },
   "license": "MIT",
@@ -47,5 +48,11 @@
   "dependencies": {
     "mkdirp": "^1.0.4",
     "node-fetch": "^2.6.7"
-  }
+  },
+  "keywords": [
+    "url",
+    "file",
+    "static",
+    "cache"
+  ]
 }

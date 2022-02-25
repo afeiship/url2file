@@ -9,7 +9,7 @@ describe('api.basic', () => {
         'https://fasimi.com/filters/series.html',
         'https://fasimi.com/filters/movie.html'
       ],
-      { dst: '.tmp' }
+      { dst: '.tmp', header: ['<!---abc --->'].join('\n'), footer: ['\n<!--footer-->'].join('\n') }
     ).then((res) => {
       expect(fs.existsSync('.tmp/index.html')).toBe(true);
       expect(fs.existsSync('.tmp/filters/series.html')).toBe(true);
