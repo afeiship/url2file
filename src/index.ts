@@ -1,6 +1,7 @@
 import path from 'path';
 import fs from 'fs';
 import mkdirp from 'mkdirp';
+import del from 'del';
 import fetch from 'node-fetch';
 
 const ua = 'Mozilla/5.0 (Windows NT 6.1; Win64; x64; rv:47.0) Gecko/20100101 Firefox/47.3';
@@ -24,7 +25,10 @@ async function url2file(inUrl: string, opts: any = {}) {
   const filename = urlinst.pathname === '/' ? 'index.html' : urlinst.pathname.substr(1);
   const file = path.join(opts.dst, filename);
   const dirname = path.dirname(file);
+  // make sure the directory exists
   mkdirp.sync(dirname);
+  // del the file if it exists
+  del.sync(file);
   const res = await fetch(inUrl, options);
   const data = await res.buffer();
   const headerBuf = toBuf(opts.header);
