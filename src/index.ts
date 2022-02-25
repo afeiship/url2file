@@ -34,7 +34,7 @@ async function url2file(inUrl: string, opts: any = {}) {
   const headerBuf = toBuf(opts.header);
   const footerBuf = toBuf(opts.footer);
   const buf = Buffer.concat([headerBuf, data, footerBuf].filter(Boolean));
-  await fs.writeFileSync(file, buf);
+  await fs.writeFileSync(file, buf, { encoding: 'utf8' });
   return file;
 }
 
